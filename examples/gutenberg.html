@@ -970,7 +970,7 @@ window.CHAT_DOCK={
   if (!document.body) return; // paste this before </body> so the body exists
 
   var PROVIDER = (cfg.provider || "anthropic").toLowerCase();
-  var MODEL = cfg.model || (PROVIDER === "openai" ? "gpt-5.4" : "claude-sonnet-4-6");
+  var MODEL = cfg.model || (PROVIDER === "openai" ? "gpt-5.6-terra" : "claude-sonnet-4-6");
   var TITLE = cfg.title || "Ask the page";
   var PLACEHOLDER = cfg.placeholder || "Ask a question…";
   var SUGGEST = cfg.suggestions || [];
@@ -1080,7 +1080,7 @@ window.CHAT_DOCK={
     var req = PROVIDER === "openai" ? {
       url: "https://api.openai.com/v1/chat/completions",
       headers: { "content-type":"application/json", "authorization":"Bearer "+key },
-      body: { model: MODEL, max_tokens: 700, messages: [{role:"system",content:sys}].concat(history) },
+      body: { model: MODEL, max_completion_tokens: 2000, messages: [{role:"system",content:sys}].concat(history) },
       pick: function(d){ return d && d.choices && d.choices[0] && d.choices[0].message && d.choices[0].message.content; }
     } : {
       // SECURITY: the "dangerous-direct-browser-access" header is safe ONLY because `key` is the
