@@ -158,6 +158,17 @@ sufficient contrast, alt text, a real mobile layout (test it — Phase 4).
 
 **Required. Never skip this, even on a weak model or with no browser.** 
 
+### Codex — use the built-in browser
+
+When running in Codex with its built-in browser available, use that browser directly for page previews, interaction checks, screenshots, and the look-and-fix loop. Follow the browser tool documentation exposed in the current session. Do not install Playwright/Chromium or run `scripts/shoot.mjs` for this path; the helper is for environments without an integrated browser.
+
+- Open the assembled HTML in the built-in browser. If local file URLs are unsupported, serve only the output directory on a loopback address and open its localhost URL.
+- Capture and inspect desktop and mobile-sized views (target 1440×900 and 390×844 using the supported viewport controls). Check the full scrolling page or successive sections, and every interactive state required below. For decks, navigate beyond the cover to a dense interior slide and scroll it to the bottom to check fixed-control overlap.
+- Operate demos, quiz answers, navigation, and review controls; opening a preview alone does not satisfy QA. Fix issues and repeat the same browser checks after revisions. Restore temporary viewport overrides when finished.
+- A missing shell Chromium executable does not mean the Codex built-in browser is unavailable. Check the session's browser tools first. If the browser or a required capability is unavailable, report exactly which checks could not run; use the standalone helper only where supported, or the static-only fallback below. Never claim unperformed visual checks passed.
+
+### Static checks
+
 **Step 0 — Static pre-flight (MANDATORY, runs even with no browser).** Re-read your output and fix every one of these — each is a blocker. Do not deliver until all pass:
 - [ ] **No emoji as icons/UI** anywhere. Cohesive SVG/icon-font you *actually render*, CSS shapes,
 numerals, or nothing. (Loading an icon font then using emoji is an automatic fail.)
@@ -240,14 +251,14 @@ visible by default). All sections must render fully on mobile without interactio
 - [ ] **Review & edit overlay inlined** — `review-mode.js` is in the page by default (with `<body       data-review-toggle>`) unless the user opted out; the “Review & edit” launcher should appear.
 - [ ] **Feels inevitable and seamless (the sashimono test).** Step back and look at the whole page at once: do the parts fit like nail-free joinery — spacing, type, and color consistent, transitions clean, nothing arbitrary or bolted on? If a section reads as grafted-on, or the rhythm breaks between sections, it fails.
 
-> **STOP — you must take a screenshot before declaring done.** In Claude Code: `node scripts/shoot.mjs file://<absolute-path-to-assembled.html> <outDir>` then Read every image. Specifically look for: blank sections, empty canvas elements, **SVG text cut off at diagram edges** (viewBox clipping), **overlapping SVG labels** (two labels at the same y-level whose x-ranges collide), clipped text in general, **template-truncated content** (a card/label rendering only the first item of a list plus a dangling “…” — show a complete short value, never a fake-clipped one), zero-height containers, **distorted shapes on tiled grids** (on any board/calendar/heatmap, cells must be square and dots/circles round — a stretched row or an elliptical “circle” means the grid is missing explicit `grid-template-rows`; check *every* interactive state, since the distorting content may only appear in one). If any are found, fix and re-screenshot. Do NOT hand over the file until you have seen the screenshots and found no major visual bugs. Skipping this is the #1 reason builds ship broken.
+> **STOP — you must take a screenshot before declaring done.** In Codex: capture and inspect screenshots with the built-in browser as described above. In Claude Code: `node scripts/shoot.mjs file://<absolute-path-to-assembled.html> <outDir>` then Read every image. Specifically look for: blank sections, empty canvas elements, **SVG text cut off at diagram edges** (viewBox clipping), **overlapping SVG labels** (two labels at the same y-level whose x-ranges collide), clipped text in general, **template-truncated content** (a card/label rendering only the first item of a list plus a dangling “…” — show a complete short value, never a fake-clipped one), zero-height containers, **distorted shapes on tiled grids** (on any board/calendar/heatmap, cells must be square and dots/circles round — a stretched row or an elliptical “circle” means the grid is missing explicit `grid-template-rows`; check *every* interactive state, since the distorting content may only appear in one). If any are found, fix and re-screenshot. Do NOT hand over the file until you have seen the screenshots and found no major visual bugs. Skipping this is the #1 reason builds ship broken.
 > 
 
 Then run the look-and-fix loop:
-1. **Render it for real and look.** Headless-browser screenshot — desktop *and* mobile — including
-**every interactive state** (expanded, filtered, drawers/modals open, nav scrolled). Helper:
+1. **Render it for real and look.** Use the Codex built-in browser, or a headless browser in other environments, to capture screenshots — desktop *and* mobile — including
+**every interactive state** (expanded, filtered, drawers/modals open, nav scrolled). Standalone helper for environments without the built-in browser:
 `node scripts/shoot.mjs <url> <outDir>` (Playwright) — auto-detects decks and shoots an interior slide scrolled to its bottom (a cover-only mobile shot hides chrome-overlap bugs). Then **Read the screenshots** and judge.
-**Check for a browser first:** `which chromium google-chrome chromium-browser 2>/dev/null | head -1` (≈1s). If none, **don’t install Playwright** — sandboxed/Cowork envs can’t run one and the download wastes 6–10 min; one failure = bail, never retry. Only `npx playwright install chromium` when the check confirms a real machine (e.g. Claude Code). **No browser?** Run Step 0 rigorously (compute contrast from your tokens), then tell the user the visual pass didn’t run and to confirm demos render.
+**Standalone browser setup (skip this in Codex when the built-in browser is available):** `which chromium google-chrome chromium-browser 2>/dev/null | head -1` (≈1s). If none, **don’t install Playwright** — sandboxed/Cowork envs can’t run one and the download wastes 6–10 min; one failure = bail, never retry. Only `npx playwright install chromium` when the check confirms a real machine (e.g. Claude Code). **No browser?** Run Step 0 rigorously (compute contrast from your tokens), then tell the user the visual pass didn’t run and to confirm demos render.
 2. **Critique like a human seeing it cold:** What’s confusing, redundant, illogical, barren, cramped, misaligned, low-contrast? Is the *order* right? Would a newcomer follow it? Does the mental model land and hold?
 3. **10x the weak spots** — then re-screenshot
 4. When you revise, you need to run this loop again (e.g., check for slop).
