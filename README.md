@@ -14,8 +14,8 @@ from filling in blanks.
 
 Given a topic (or your own source material), the skill:
 
-- **Scopes first** — numbered questions with recommendations, asked in rounds as dependencies
-  resolve: grounding, audience/depth, format, design direction, visual style, and quiz.
+- **Scopes first** — numbered questions with recommendations, asked together in one message:
+  grounding, audience/depth, format, design direction, visual style, and quiz.
 - **Gets the facts right** — grounds in your material and/or primary sources; cites them.
 - **Architects for learning** — leads with one mental model, layers depth, builds around a
   single clear centerpiece.

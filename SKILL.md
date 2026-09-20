@@ -33,11 +33,11 @@ micro-demo** instead of writing a paragraph. Learning-by-doing.
 
 ### Scoping interview
 
-Treat the brief as a decision tree. Use answers already supplied in the conversation or an app form; do not ask for them again.
+Use answers already supplied in the conversation or an app form; do not ask for them again.
 
-- **Ask in rounds.** In each round, ask all open questions whose prerequisites are settled. Wait for the answers, then update the tree. Questions that depend on an unanswered question belong in a later round.
-- **Use numbered text questions** in the user's language, with concise choices and a recommended answer for each. Keep numbering continuous across rounds. Explain unfamiliar choices in the question itself; recommendations are not decisions.
-- **Look up facts yourself.** Inspect available material and tools instead of asking the user for facts you can retrieve. Continue with independent questions while a lookup is pending.
+- **Ask everything in one message.** Include all unresolved core questions and any relevant optional questions, then wait for the answers. For conditional choices, present the branches together so the user can answer the applicable one.
+- **Use numbered text questions** in the user's language, with concise choices and a recommended answer for each. Number questions sequentially. Explain unfamiliar choices in the question itself; recommendations are not decisions.
+- **Look up facts yourself.** Inspect available material and tools instead of asking the user for facts you can retrieve.
 - **Finish when the brief is settled.** Resolve the core decisions below and any consequential ambiguity. State applicable defaults alongside the questions. The user's answers or explicit delegation settle the decisions; ask a focused follow-up only where something remains unclear.
 
 ```text
@@ -52,11 +52,11 @@ Treat the brief as a decision tree. Use answers already supplied in the conversa
 - **Audience & depth** — newcomer / practitioner / both-layered, and how deep. Drives sequencing.
 - **Format / reading shape** — scrolling page / slide deck / hybrid. **Recommend the one that fits the topic** (deck for a linear narrative or an ordered sequence; scroll for reference or layered depth-on-demand). Changes the whole IA. See *Format & reading shape*. **Must be its own question — never combine with style.**
 - **Play it straight, or go bold?** — ask before visual style. Explain both choices: **straight** means sharp and professional, with the theme as a light accent; **bold** means cohesive, immersive art direction built around the topic. Recommend based on the subject; the user chooses.
-    - **Play it straight** — clean editorial *excellence* (Stripe / FT / Vox): restrained layout, theme as a light accent, one subject-derived color. Sharp and polished, not timid. Best for reference, legal, compliance, or when the user wants it sober. → then ask the visual-style register in the next round.
+    - **Play it straight** — clean editorial *excellence* (Stripe / FT / Vox): restrained layout, theme as a light accent, one subject-derived color. Sharp and polished, not timid. Best for reference, legal, compliance, or when the user wants it sober. → include the visual-style register in the same interview.
     - **Go bold** — commit to one strong, cohesive concept and turn the ambition up: **full art direction** (theme every surface — body, UI, sliders, quiz — into one immersive world, not just an accent, when it’s cohesive); **adventurous format** (break the standard eyebrow→heading→prose rhythm; asymmetry, dramatic scale, unexpected but purposeful structure and motion); **imaginative demos** (reach for the most vivid concept the topic allows, not the safe stepper - see *Themed interactivity is the gold standard* and *Interactivity Patterns* below); **a strong point of view**, with the prose-flair dial (see *Prose voice*) pushed up to match — they move together. Best for evocative, cultural, historical, or physical-phenomenon topics. → the concept pass drives the look (see visual style, next).
     - **Bold is not a license for slop — it’s the opposite.** Slop is *generic* (emoji icons, stock gradients, bento grids, the templated palette); bold is *specific and crafted*. Every anti-slop rule in Phase 2 still holds, and **legibility is non-negotiable at any intensity.** A bold build is judged **relevant + cohesive + legible** (Phase 2), never on “how much theme is too much.”
     - Honor the chosen direction through Phases 2–4; don’t let the QA gate quietly sand a bold build back to safe.
-- **Visual style / vibe** — **conditional on the answer above; all style lives in centralized tokens.**
+- **Visual style / vibe** — present the following branches in the same question; the user answers the one matching their design direction. All style lives in centralized tokens.
     - **If “play it straight”:** ask which register fits and recommend one — minimal-editorial (clean, Stripe-docs — good default) / technical-dark / brand-matched (they supply colors/font/URL). Theme is at most a light accent.
     - **If “go bold”:** **derive the style from the topic** — the concept pass (below) generates a **topic-matched art direction** from the subject itself (palette + typefaces derived from the concept, film-noir-style). Ask about **tonal leaning** only if it materially changes the concept — e.g. *dark & dramatic* / *warm & vintage* / *bright & playful* — but the concept, not a preset, is the style. See Phase 2 for the build bar (relevant + cohesive + legible).
 - **Quiz / knowledge check?** — yes/no. A short test-yourself (MC or fill-in, instant right/wrong + a one-line *why*) makes it stickier and works in a pure file. Recommend **yes, small end-of-section or end-of-page** for teaching, and **no** for reference-style content.
