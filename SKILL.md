@@ -20,38 +20,51 @@ micro-demo** instead of writing a paragraph. Learning-by-doing.
 
 ---
 
-> **STOP — do Phase 0 before writing any HTML or running any research.** Your first response must be a short scoping interview covering **all seven** must-ask questions in Phase 0 — **grounding · audience & depth · format · play-it-straight-or-go-bold · visual style · quiz · AI chat.** Ask every one; the last (AI chat) is the most-skipped — do not drop it. You can add more questions (see below), but not subtract.
-> 
+> **Complete Phase 0 before writing HTML.** Resolve the brief through the interview below, using existing answers and asking only about open decisions.
 
 ## Phase 0 — Research & sharpen (before any HTML)
 
 - **Get the facts first — but only research if the topic needs it.** Being wrong is bad, but unnecessary research on a well-established topic wastes 2–3 minutes on topics you already know. Before searching, ask: is this topic **settled** or **possibly dynamic**?
-    - **Settled** — the topic is well-understood, stable, and your training data is authoritative. No research needed; go straight to Phase 1. Examples: how airplanes fly, how DNA replication works, how compound interest works, the French Revolution.
+    - **Settled** — the topic is well-understood, stable, and your training data is authoritative. No research needed; complete the interview, then go to Phase 1. Examples: how airplanes fly, how DNA replication works, how compound interest works, the French Revolution.
     - **Possibly dynamic** — the topic involves anything that changes: current legislation or amendments, a specific company/product, market data, recent events, regulatory status, anything post-cutoff, or a niche area where your training may be incomplete. Research before building.
     - This applies to **any domain** — a science topic can be dynamic (a new treatment, a recent discovery), and a legal topic can be settled (the US Constitution’s original text).
     - **Cap research at 2–3 fetches.** One authoritative primary source + at most 1–2 cross-checks. Stop there, since additional searches add little value and burn tokens and time.
     - **Gather synthesis while you research, not after.** As you read, note the parallels, tensions, ironies, and second-order effects (what does this resonate with? what’s the contradiction? who’s affected?). Use these later if they illuminate the html, but don’t force a connection that doesn’t exist.
-- **The seven must-ask questions (from the gate above).** Present each as a **clickable option
-menu** in the richest UI available in the environment (Cowork, Claude app); if you’re in plain text (e.g., Claude Code), then list them in one message. **If the menu tool caps how many questions you can ask per prompt (Cowork caps around four), ask them in multiple rounds — a first batch, then the rest — or put the overflow questions in the message text. Either way, ask all seven. NEVER silently apply a default to a must-ask (especially AI chat) just because the menu was full — a tool cap is not permission to skip.** Recommend a default for each (one click) — **except AI chat, which has no recommended default: ask it as an open yes/no.** Never skip any of the seven, including the last. **Labels must be self-explanatory — some surfaces (Cowork) show only the option *label* and drop the per-option description, so never rely on the description field to carry the meaning. If a choice isn’t obvious from a short label alone (e.g. *play it straight / go bold*, *scrolling / deck*), fold the gloss into the label text itself and repeat it in the description; when in doubt, put the key distinction in the question or message body too.**
-    - **Grounding** — does the user have their own material (doc, PDF, notes, URL) to ground in? If yes, treat it as the **primary source of truth**. Ask this as: **“Do you have your own material to ground in?”** with options “No” (recommended default) and “Yes — I’ll provide it”.
-    - **Audience & depth** — newcomer / practitioner / both-layered, and how deep. Drives sequencing.
-    - **Format / reading shape** — scrolling page / slide deck / hybrid. **Neither is the default — pre-select the one that fits the topic** (deck for a linear narrative or an ordered sequence; scroll for reference or layered depth-on-demand). Changes the whole IA. See *Format & reading shape*. **Must be its own question — never combine with style.**
-    - **Play it straight, or go bold?** — how far to commit the design, and the axis that decides the look, so **ask it before visual style (it gates that question).** **Never silently default to bland** — an unattended build drifts safe; this is what stops it. *“Bold” means committed and cohesive, not loud or decorated.* **Make the explanation UI-proof — never present the two as bare labels.** Some menu surfaces (e.g. Cowork) render only the option *labels* and drop the description field, so the gloss must live where no renderer can hide it: **fold it into the visible label text itself** — e.g. `Play it straight — sharp & professional, theme as a light accent` and `Go bold — immersive art direction built around the topic` — **and** also fill the per-option description (`Play it straight:` *Sharp and professional.* · `Go bold:` *Immersive art direction built around the topic.*) for surfaces that do show it. If you present the interview as plain text rather than a menu, write the gloss inline in the question. The reader must always see what each choice means without hovering or expanding.
-        - **Play it straight** — clean editorial *excellence* (Stripe / FT / Vox): restrained layout, theme as a light accent, one subject-derived color. Sharp and polished, not timid. Best for reference, legal, compliance, or when the user wants it sober. → then ask the visual-style register (next question).
-        - **Go bold** — commit to one strong, cohesive concept and turn the ambition up: **full art direction** (theme every surface — body, UI, sliders, quiz — into one immersive world, not just an accent, when it’s cohesive); **adventurous format** (break the standard eyebrow→heading→prose rhythm; asymmetry, dramatic scale, unexpected but purposeful structure and motion); **imaginative demos** (reach for the most vivid concept the topic allows, not the safe stepper - see *Themed interactivity is the gold standard* and *Interactivity Patterns* below); **a strong point of view**, with the prose-flair dial (see *Prose voice*) pushed up to match — they move together. Best for evocative, cultural, historical, or physical-phenomenon topics. → the concept pass drives the look (see visual style, next).
-        - **Bold is not a license for slop — it’s the opposite.** Slop is *generic* (emoji icons, stock gradients, bento grids, the templated palette); bold is *specific and crafted*. Every anti-slop rule in Phase 2 still holds, and **legibility is non-negotiable at any intensity.** A bold build is judged **relevant + cohesive + legible** (Phase 2), never on “how much theme is too much.”
-        - **Read the topic and recommend** (evocative → go bold; dry reference → straight), but the user chooses. This sets how hard Phases 2–4 commit; honor it — don’t let the QA gate quietly sand a bold build back to safe.
-    - **Visual style / vibe** — **conditional on the answer above; all style lives in centralized tokens.**
-        - **If “play it straight”:** offer a register + a default — minimal-editorial (clean, Stripe-docs — good default) / technical-dark / brand-matched (they supply colors/font/URL). Theme is at most a light accent.
-        - **If “go bold”:** **skip the preset menu** — the concept pass (below) generates a **topic-matched art direction** from the subject itself (palette + typefaces derived from the concept, film-noir-style). You may offer a single **tonal leaning** so the user keeps a dial — e.g. *dark & dramatic* / *warm & vintage* / *bright & playful* — but the concept, not a preset, is the style. See Phase 2 for the build bar (relevant + cohesive + legible).
-    - **Quiz / knowledge check?** — yes/no. A short test-yourself (MC or fill-in, instant right/wrong + a one-line *why*) makes it stickier and works in a pure file. Default **yes, small end-of-section or end-of-page** unless declined or it’s reference-style.
-    - **AI chat / Q&A?** — **don’t assume no; ask this explicitly even for a single-file build** (it’s the most-skipped question). No recommended default — a genuine yes/no. If yes, build as a **single-file BYOK** (inline
-    `chat-dock.js` — reader supplies their own key; stays one portable `.html`); ask which provider. Only proceed without chat if the user declines, and say it’s designed to add later. See *Drop-in widgets*.
+
+### Scoping interview
+
+Treat the brief as a decision tree. Use answers already supplied in the conversation or an app form; do not ask for them again.
+
+- **Ask in rounds.** In each round, ask all open questions whose prerequisites are settled. Wait for the answers, then update the tree. Questions that depend on an unanswered question belong in a later round.
+- **Use numbered text questions** in the user's language, with concise choices and a recommended answer for each. Keep numbering continuous across rounds. Explain unfamiliar choices in the question itself; recommendations are not decisions.
+- **Look up facts yourself.** Inspect available material and tools instead of asking the user for facts you can retrieve. Continue with independent questions while a lookup is pending.
+- **Finish when the brief is settled.** Resolve the core decisions below and any consequential ambiguity. State applicable defaults alongside the questions. The user's answers or explicit delegation settle the decisions; ask a focused follow-up only where something remains unclear.
+
+```text
+❓ **Q1** - **<question title>**: <question body and choices>
+
+➡️ <recommended answer>
+```
+
+**Core decisions** — ask only those not already settled:
+
+- **Grounding** — does the user have their own material (doc, PDF, notes, URL) to ground in? If yes, treat it as the **primary source of truth**. Ask this as: **“Do you have your own material to ground in?”** with options “No” and “Yes — I’ll provide it”; recommend using supplied material when available.
+- **Audience & depth** — newcomer / practitioner / both-layered, and how deep. Drives sequencing.
+- **Format / reading shape** — scrolling page / slide deck / hybrid. **Recommend the one that fits the topic** (deck for a linear narrative or an ordered sequence; scroll for reference or layered depth-on-demand). Changes the whole IA. See *Format & reading shape*. **Must be its own question — never combine with style.**
+- **Play it straight, or go bold?** — ask before visual style. Explain both choices: **straight** means sharp and professional, with the theme as a light accent; **bold** means cohesive, immersive art direction built around the topic. Recommend based on the subject; the user chooses.
+    - **Play it straight** — clean editorial *excellence* (Stripe / FT / Vox): restrained layout, theme as a light accent, one subject-derived color. Sharp and polished, not timid. Best for reference, legal, compliance, or when the user wants it sober. → then ask the visual-style register in the next round.
+    - **Go bold** — commit to one strong, cohesive concept and turn the ambition up: **full art direction** (theme every surface — body, UI, sliders, quiz — into one immersive world, not just an accent, when it’s cohesive); **adventurous format** (break the standard eyebrow→heading→prose rhythm; asymmetry, dramatic scale, unexpected but purposeful structure and motion); **imaginative demos** (reach for the most vivid concept the topic allows, not the safe stepper - see *Themed interactivity is the gold standard* and *Interactivity Patterns* below); **a strong point of view**, with the prose-flair dial (see *Prose voice*) pushed up to match — they move together. Best for evocative, cultural, historical, or physical-phenomenon topics. → the concept pass drives the look (see visual style, next).
+    - **Bold is not a license for slop — it’s the opposite.** Slop is *generic* (emoji icons, stock gradients, bento grids, the templated palette); bold is *specific and crafted*. Every anti-slop rule in Phase 2 still holds, and **legibility is non-negotiable at any intensity.** A bold build is judged **relevant + cohesive + legible** (Phase 2), never on “how much theme is too much.”
+    - Honor the chosen direction through Phases 2–4; don’t let the QA gate quietly sand a bold build back to safe.
+- **Visual style / vibe** — **conditional on the answer above; all style lives in centralized tokens.**
+    - **If “play it straight”:** ask which register fits and recommend one — minimal-editorial (clean, Stripe-docs — good default) / technical-dark / brand-matched (they supply colors/font/URL). Theme is at most a light accent.
+    - **If “go bold”:** **derive the style from the topic** — the concept pass (below) generates a **topic-matched art direction** from the subject itself (palette + typefaces derived from the concept, film-noir-style). Ask about **tonal leaning** only if it materially changes the concept — e.g. *dark & dramatic* / *warm & vintage* / *bright & playful* — but the concept, not a preset, is the style. See Phase 2 for the build bar (relevant + cohesive + legible).
+- **Quiz / knowledge check?** — yes/no. A short test-yourself (MC or fill-in, instant right/wrong + a one-line *why*) makes it stickier and works in a pure file. Recommend **yes, small end-of-section or end-of-page** for teaching, and **no** for reference-style content.
+
 - **Default unless the topic/answers make it relevant** (state your default; only ask if it matters):
 **depth/length** — *quick one-pager* (~3 min, one idea, ~1 demo) · **standard** (~8–10 min,
 default) · *comprehensive deep-dive* (more sections + demos; deeper layers); sets how much you build, distinct from *audience/depth* (who it’s for) · scope (in/out for v1) · interactivity depth (filters, timelines, multiple demos) · output target (see *Output targets*) · delivery/deploy
 (default = hand over the file; see Phase 5).
-- **Exception — programmatic harness only:** if a *wrapper app* already collected these via its own form (e.g. Explainer Studio), the answers arrive with the brief — honor them, don’t re-interview. A normal chat with a person (including the Claude app) is **NOT** this case: ask the must-ask set.
 - Collect a **source list** as you go; every non-obvious claim should be traceable.
 - **Prose voice (silent — not a user question).** One house voice: **Professional**.
     - Concrete-first and reportorial — lead with the fact or the object, state it plainly, and let specifics and numbers carry the weight. No reveal structure (“not X, it’s Y”), no aphoristic closers, no mic drops, no cutesy motifs. Em dashes should be rare; ask yourself “do I really need an em dash or will other punctuation do?”
@@ -340,7 +353,7 @@ omit if the user opts out. Reviewers get Preview / Edit text / Add note; **Downl
 notes appended as an HTML comment; **Copy notes for LLM** yields a revision brief. Activate via
 `?edit` or `<body data-review-toggle>`. Limits: per-browser, no server; `contenteditable` doesn’t
 reach JS-rendered data (use the note path).
-- **`chat-dock.js` — “Ask the page” BYOK chat.** The single-file way to do the Phase 0 AI-chat axis
+- **`chat-dock.js` — “Ask the page” BYOK chat.** Include only when explicitly requested. Single-file chat
 with no backend: grounded in the page, using the *reader’s own* key. Optionally set
 `window.CHAT_DOCK={provider,title,placeholder,suggestions}` first (`provider`: `anthropic` default |
 `openai`); `[data-chat-open]` opens it. Key stays in memory only — fine *because it’s the reader’s*;
