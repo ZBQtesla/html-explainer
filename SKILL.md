@@ -36,14 +36,17 @@ micro-demo** instead of writing a paragraph. Learning-by-doing.
 Use answers already supplied in the conversation or an app form; do not ask for them again.
 
 - **Ask everything in one message.** Include all unresolved core questions and any relevant optional questions, then wait for the answers. For conditional choices, present the branches together so the user can answer the applicable one.
-- **Use numbered text questions** in the user's language, with concise choices and a recommended answer for each. Number questions sequentially. Explain unfamiliar choices in the question itself; recommendations are not decisions.
+- **Write questions directly in the chat response** as rendered Markdown in the user's language, using the format below. Do not use question cards, option pickers, forms, or input-request tools (such as `request_user_input` or `request_user_input_async`) for this interview. Keep each question, its lettered text choices, and its recommendation together in the message body; do not wrap the interview in a code block. Number questions sequentially and give a brief reason for each recommendation. The user replies in chat; recommendations are not decisions.
 - **Look up facts yourself.** Inspect available material and tools instead of asking the user for facts you can retrieve.
 - **Finish when the brief is settled.** Resolve the core decisions below and any consequential ambiguity. State applicable defaults alongside the questions. The user's answers or explicit delegation settle the decisions; ask a focused follow-up only where something remains unclear.
 
 ```text
-❓ **Q1** - **<question title>**: <question body and choices>
+❓ **Q1** — **<question title>**: <question body>
 
-➡️ <recommended answer>
+- **A. <choice>**: <brief explanation>
+- **B. <choice>**: <brief explanation>
+
+➡️ **Recommended: <letter or answer>.** <brief reason>
 ```
 
 **Core decisions** — ask only those not already settled:

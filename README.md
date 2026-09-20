@@ -14,7 +14,8 @@ from filling in blanks.
 
 Given a topic (or your own source material), the skill:
 
-- **Scopes first** — numbered questions with recommendations, asked together in one message:
+- **Scopes first** — numbered questions, lettered text choices, and recommendations directly in one
+  chat message, without question cards:
   grounding, audience/depth, format, design direction, visual style, and quiz.
 - **Gets the facts right** — grounds in your material and/or primary sources; cites them.
 - **Architects for learning** — leads with one mental model, layers depth, builds around a
